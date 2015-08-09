@@ -20,11 +20,10 @@ gem 'pg'
 
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller'
+#  gem 'binding_of_caller'
 #  gem 'rails_layout'
   gem 'did_you_mean'
   gem 'debase'
-# gem 'curb'
 end
 
 group :test do

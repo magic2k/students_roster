@@ -1,0 +1,24 @@
+p#notice = notice
+
+p
+  strong First name:
+  = @student.first_name
+p
+  strong Last name:
+  = @student.last_name
+p
+  strong Birth date:
+  = @student.birth_date
+p
+  strong Email:
+  = @student.email
+p
+  strong Ip address:
+  = @student.ip_address
+p
+  strong Mean grade:
+  = @student.mean_grade
+
+= link_to 'Edit', edit_student_path(@student)
+'|
+= link_to 'Back', students_path

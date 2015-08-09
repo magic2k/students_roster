@@ -5,8 +5,10 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: postgres
+  adapter: postgresql
 #  timeout: 5000
+  host: localhost
+  encoding: unicode
   database: 'students_roster'
   username: 'roster_app'
   password: 'moomoo'
