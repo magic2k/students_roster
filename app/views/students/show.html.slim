@@ -16,8 +16,20 @@ p
   strong Ip address:
   = @student.ip_address
 p
+  strong Semester:
+  = @student.semester
+p
   strong Group:
   = @student.group.name
+p
+  strong Grades:
+
+  - @student.grades.each do |g|
+    tr
+      p
+      td.discipline = g.discipline.name
+      td.grade      = g.grade
+
 
 = link_to 'Edit', edit_student_path(@student)
 '|
