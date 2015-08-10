@@ -1,17 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 
 @groups=15
 @students=100
 
 
 
-# Groups seed
+# create groups
 (@groups/3).times do |i|
   i+=1
   Group.create!(name: "10#{i}")
@@ -40,8 +33,8 @@ end
                   email:      Faker::Internet.email,
                   ip_address: @ip,
                   semester:   rand(1...5),
-                  created_at: Faker::Time.backward(90),
-                  group_id:   rand(1...16) )
+                  group_id:   rand(1...16),
+                  registered_at: Faker::Time.backward(90))
 
   #some of them will have characteristics and non-unique ip's
   if (i % 2 == 0)
@@ -51,7 +44,7 @@ end
                     email:      Faker::Internet.email,
                     ip_address: @ip,
                     semester:   rand(1...5),
-                    created_at: Faker::Time.backward(90),
+                    registered_at: Faker::Time.backward(90),
                     group_id:   rand(1...16) )
     LeadCharacteristicOfStudent.create!(student_id: stud.id, characteristic: Faker::Hacker.say_something_smart)
   end
@@ -64,6 +57,7 @@ end
       disc_id = rand(1...9)
       Grade.where(student_id: s.id).where(discipline_id: disc_id).first_or_create!(student_id: s.id, discipline_id: disc_id, grade: rand(1...6))
     end
+    Student.recalculate_average_grade(s.id)
   end
 end
 

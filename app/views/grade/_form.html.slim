@@ -1,0 +1,19 @@
+= form_for @grade do |f|
+  - if @grade.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@grade.errors.count, "error")} prohibited this grade from being saved:"
+      ul
+        - @grade.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :grade
+    = f.text_field :grade
+  .field
+    = f.label :student
+    = f.collection_select(:student_id, Student.all, :id, :id )
+  .field
+    = f.label :discipline
+    = f.collection_select(:discipline_id, Discipline.all, :id, :name )
+
+  .actions = f.submit

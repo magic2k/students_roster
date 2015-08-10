@@ -17,17 +17,19 @@ ActiveRecord::Schema.define(version: 20150809110756) do
   enable_extension "plpgsql"
 
   create_table "disciplines", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",                     null: false
+    t.integer  "lock_version", default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "grades", force: :cascade do |t|
     t.integer  "student_id"
     t.integer  "discipline_id"
     t.integer  "grade"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "lock_version",  default: 0
   end
 
   add_index "grades", ["discipline_id"], name: "index_grades_on_discipline_id", using: :btree
@@ -37,8 +39,9 @@ ActiveRecord::Schema.define(version: 20150809110756) do
   create_table "groups", force: :cascade do |t|
     t.string   "name"
     t.integer  "student_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "lock_version", default: 0
   end
 
   add_index "groups", ["name"], name: "index_groups_on_name", unique: true, using: :btree
@@ -46,8 +49,9 @@ ActiveRecord::Schema.define(version: 20150809110756) do
   create_table "lead_characteristic_of_students", force: :cascade do |t|
     t.text     "characteristic"
     t.integer  "student_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "lock_version",   default: 0
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "lead_characteristic_of_students", ["student_id"], name: "index_lead_characteristic_of_students_on_student_id", using: :btree
@@ -56,11 +60,14 @@ ActiveRecord::Schema.define(version: 20150809110756) do
     t.string   "first_name"
     t.string   "last_name"
     t.date     "birth_date"
+    t.datetime "registered_at"
     t.string   "email"
     t.inet     "ip_address"
     t.integer  "semester"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.decimal  "average_grade"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "lock_version",  default: 0
     t.integer  "group_id"
   end
 

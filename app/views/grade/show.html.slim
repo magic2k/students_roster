@@ -1,0 +1,15 @@
+p
+  strong discipline:
+  = @grade.discipline_id
+p
+  strong student:
+  = @grade.student_id
+p
+  strong Grade
+  = @grade.grade
+
+
+
+
+= link_to 'Edit', edit_grade_path(@grade)
+

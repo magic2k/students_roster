@@ -5,6 +5,7 @@ class CreateGroups < ActiveRecord::Migration
       t.integer :student_id, unique: true
 
       t.timestamps null: false
+      t.integer :lock_version, default: 0
       t.index :name, unique: true
     end
   end

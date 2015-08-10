@@ -10,6 +10,9 @@ p
   strong Birth date:
   = @student.birth_date
 p
+  strong Registered:
+  = @student.registered_at
+p
   strong Email:
   = @student.email
 p
@@ -21,6 +24,7 @@ p
 p
   strong Group:
   = @student.group.name
+hr
 p
   strong Grades:
 
@@ -29,6 +33,18 @@ p
       p
       td.discipline = g.discipline.name
       td.grade      = g.grade
+p
+  strong Average grade:
+  = @student.average_grade
+
+- unless @characteristic.empty?
+  hr
+  p
+    strong Characteristic:
+    = @characteristic.pluck(:characteristic)
+
+
+
 
 
 = link_to 'Edit', edit_student_path(@student)
