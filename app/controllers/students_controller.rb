@@ -15,6 +15,8 @@ class StudentsController < ApplicationController
   # GET /students/new
   def new
     @student = Student.new
+#    @groups = Group.all.pluck(:name)
+   # @groups = Group.all
   end
 
   # GET /students/1/edit
@@ -69,6 +71,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:first_name, :last_name, :birth_date, :email, :ip_address, :mean_grade)
+      params.require(:student).permit(:first_name, :last_name, :birth_date, :email, :ip_address, :semester, :group_id)
     end
 end

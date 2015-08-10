@@ -22,6 +22,10 @@
     = f.label :ip_address
     = f.text_field :ip_address
   .field
-    = f.label :mean_grade
-    = f.text_field :mean_grade
+    = f.label :semester
+    = f.text_field :semester
+  .field
+    = f.label :group
+    = f.collection_select(:group_id, Group.all, :id, :name )
+
   .actions = f.submit

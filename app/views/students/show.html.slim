@@ -16,8 +16,8 @@ p
   strong Ip address:
   = @student.ip_address
 p
-  strong Mean grade:
-  = @student.mean_grade
+  strong Group:
+  = @student.group.name
 
 = link_to 'Edit', edit_student_path(@student)
 '|

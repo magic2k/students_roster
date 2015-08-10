@@ -15,12 +15,14 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'pry'
+gem 'pry-rails'
 gem 'slim-rails'
 gem 'pg'
 
 group :development do
   gem 'better_errors'
-#  gem 'binding_of_caller'
+  gem 'binding_of_caller'
+  gem 'faker'
 #  gem 'rails_layout'
   gem 'did_you_mean'
   gem 'debase'
